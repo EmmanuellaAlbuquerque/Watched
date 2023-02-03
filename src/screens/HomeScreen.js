@@ -6,11 +6,13 @@
 import React, { useEffect, useState } from "react";
 import { getTrendingTVShows } from '../services/MovieDbAPIClient';
 import { images_URL } from '../services/MovieDbAPIConfig';
-import { ImageBackground, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { ImageBackground, View, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Image, FlatList, VStack, Text, Box, AspectRatio, 
   ScrollView, InfoOutlineIcon, HStack, Center, AddIcon } from "native-base";
-
+import { ShowList } from "../components/ShowList";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AntDesign  } from '@expo/vector-icons';
 
 export function HomeScreen({ navigation }) {
 
@@ -28,7 +30,19 @@ export function HomeScreen({ navigation }) {
   }, []);
 
   function getDetails(topShow) {
-    navigation.navigate('Details', { topShow });
+    navigation.navigate('Details', { item: topShow });
+  }
+
+  function logOut() {
+    AsyncStorage.getAllKeys()
+        .then(keys => AsyncStorage.multiRemove(keys))
+        .then(console.log('logout.'));
+
+    navigation.navigate('Login');
+  }
+
+  function AddToWatched() {
+
   }
 
   return (
@@ -44,10 +58,14 @@ export function HomeScreen({ navigation }) {
             <LinearGradient style={{ flex: 1 }} colors={['transparent', 'transparent', 'black']}>
               <View style={{ flex: 1 }}>
               </View>
+              <Center style={styles.logOut}>
+                <AntDesign onPress={logOut} name="logout" size={32} color="white" />
+                <Text color="#fff">Sair</Text>
+              </Center>
 
               <HStack>
                   <TouchableOpacity style={styles.button} onPress={() => {
-                    
+                    AddToWatched()
                   } }>
                     <Center>
                       <AddIcon size="8" color="#fff" />
@@ -73,27 +91,7 @@ export function HomeScreen({ navigation }) {
         }
         </AspectRatio>
       </Box>
-      <Text bold fontSize="2xl" color="white" style={{ marginLeft: 20, marginBottom: 10  }}>
-        Populares na TV
-      </Text>
-      <FlatList data={trending} horizontal={true} renderItem={({
-        item
-      }) =>
-      <VStack space={2} alignItems="center" style={{ padding: 5 }} >
-          <Image source={{
-            uri: `${images_URL}${item.poster_path}`
-            }} 
-            alt="tv_show" 
-            size="xl"
-            resizeMode="cover"
-            height="200" 
-            width="100"
-            borderRadius={8}
-          />
-          <Text color="#fff">{item.name}</Text>
-      </VStack>
-      }
-      keyExtractor={item => item.id} />
+      <ShowList shows={trending} title="Populares na TV" navigation={navigation} />
     </ScrollView>
   );
 }
@@ -103,5 +101,12 @@ const styles = StyleSheet.create({
     width: '50%', 
     backgroundColor: "transparent", 
     marginBottom: 70
-  }
+  },
+
+  logOut: {
+    position: "absolute", 
+    top: 20, 
+    right: 0, 
+    margin: 50
+  },
 });

@@ -10,7 +10,7 @@ import { Text, AspectRatio, ScrollView, HStack, Center } from "native-base";
 import { images_URL } from '../services/MovieDbAPIConfig';
 
 export function DetailsScreen({ navigation, route }) {
-  const topShow = route.params.topShow;
+  const item = route.params.item;
 
   function goBack() {
     navigation.goBack();
@@ -20,9 +20,9 @@ export function DetailsScreen({ navigation, route }) {
     <ScrollView style={{ backgroundColor: '#000' }}>
       <AspectRatio w="100%" ratio={4 / 5.5}>
       {/* re `16/9`, `16/10`, `9/16`, `4/3` */}
-      { topShow ? 
+      { item ? 
         <ImageBackground source={{
-          uri: `${images_URL}${topShow.poster_path}`
+          uri: `${images_URL}${item.poster_path}`
         }}
         >
           <LinearGradient style={{ flex: 1 }} colors={['transparent', 'transparent', 'black']}>
@@ -37,22 +37,26 @@ export function DetailsScreen({ navigation, route }) {
       </AspectRatio>
       <Center>
         <HStack style={{ width: '100%', justifyContent: "space-evenly" }}>
+          { item.media_type ?
           <HStack alignItems="center">
             <Feather name="tv" size={32} color="white" />
             <Text fontSize="3xl" style={styles.movie_info}>
-              {topShow.media_type.toUpperCase()}
+              {item.media_type.toUpperCase()}
             </Text>
           </HStack>
+          : 
+          <></>
+          }
 
           <HStack alignItems="center">
             <AntDesign name="star" size={32} color="#FFDF00" />
             <Text fontSize="3xl" style={styles.movie_info}>
-              {topShow.vote_average.toFixed(1)}
+              {item.vote_average.toFixed(1)}
             </Text>
           </HStack>
         </HStack>
-        <Text fontSize="4xl" style={styles.name} >{topShow.name}</Text>
-        <Text fontSize="md" style={styles.overview} >{topShow.overview}</Text>
+        <Text fontSize="4xl" style={styles.name} >{item.name}</Text>
+        <Text fontSize="md" style={styles.overview} >{item.overview}</Text>
       </Center>
     </ScrollView>
   )
