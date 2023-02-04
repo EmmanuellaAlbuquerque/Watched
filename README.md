@@ -7,7 +7,9 @@ Home Screen | Details Screen | Watched Screen
 :---: | :---:| :---:|
 <img src=".github/images/HomeScreen.jpg" width = 300px> | <img src=".github/images/ShowDetailsScreen.jpg" width = 300px> | <img src=".github/images/WatchedScreen.jpg" width = 300px> |
 
-### The Movie Database API
+### Watched
+
+[themoviedb](https://developers.themoviedb.org/3/getting-started/introduction) - The Movie Database API
 
 #### implementar login
 - [x] Create new Token (request_token)

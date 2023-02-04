@@ -41,13 +41,17 @@ export function DetailsScreen({ navigation, route }) {
           <HStack alignItems="center">
             <Feather name="tv" size={32} color="white" />
             <Text fontSize="3xl" style={styles.movie_info}>
-              {item.media_type.toUpperCase()}
+              Série
             </Text>
           </HStack>
           : 
-          <></>
+          <HStack alignItems="center">
+            <Feather name="tv" size={32} color="white" />
+            <Text fontSize="3xl" style={styles.movie_info}>
+              Filme
+            </Text>
+          </HStack>
           }
-
           <HStack alignItems="center">
             <AntDesign name="star" size={32} color="#FFDF00" />
             <Text fontSize="3xl" style={styles.movie_info}>
@@ -55,7 +59,7 @@ export function DetailsScreen({ navigation, route }) {
             </Text>
           </HStack>
         </HStack>
-        <Text fontSize="4xl" style={styles.name} >{item.name}</Text>
+        <Text fontSize="4xl" style={styles.name} >{item.name || item.title}</Text>
         <Text fontSize="md" style={styles.overview} >{item.overview}</Text>
       </Center>
     </ScrollView>

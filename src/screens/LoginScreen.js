@@ -71,7 +71,7 @@ export function LoginScreen({ navigation }) {
           alt="logo" 
           mb="12"
           size="sm"
-          w="90%"
+          w="100%"
         />
         <Stack space={4} w="85%">
         <Text fontSize="4xl" style={{ color: colors.text }}>Entrar</Text>

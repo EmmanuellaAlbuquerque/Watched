@@ -9,7 +9,7 @@ import { ShowList } from "../components/ShowList";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getWatched } from "../services/MovieDbAPIClient";
 import React, { useEffect, useState } from "react";
-import { Box, Text, VStack, Image } from "native-base";
+import { Text, ScrollView } from "native-base";
 import { useTheme } from '@react-navigation/native';
 
 export function WatchedShowsScreen({ navigation }) {
@@ -39,12 +39,12 @@ export function WatchedShowsScreen({ navigation }) {
   }, []);
 
   return (
-  <Box mt="16" ml="2.5">
+  <ScrollView mt="16" ml="2.5">
     <Text fontSize="3xl" textAlign="center" style={{ color: colors.text }}>
       Assistidos
     </Text>
     <ShowList shows={watchedMovies} title="Filmes" navigation={navigation} />
     <ShowList shows={watchedSeries} title="Séries" navigation={navigation} />
-  </Box>
+  </ScrollView>
   );
 }
