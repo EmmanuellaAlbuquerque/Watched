@@ -61,6 +61,10 @@ export function LoginScreen({ navigation }) {
     }
   }
 
+  function handleSignUp() {
+    navigation.navigate('SignUp');
+  }
+
   return (
     // position="absolute" zIndex={1} top="10%"
     <Box style={{ flex: 1 }}>
@@ -107,6 +111,7 @@ export function LoginScreen({ navigation }) {
             mr="2"
             fontSize="md"
             style={{ color: colors.text }}
+            onPress={handleSignUp}
           > Não tem conta?  <Text 
                 bold 
                 underline 
