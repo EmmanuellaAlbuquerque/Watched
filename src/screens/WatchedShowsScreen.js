@@ -40,7 +40,7 @@ export function WatchedShowsScreen({ navigation }) {
 
   return (
   <ScrollView mt="16" ml="2.5">
-    <Text fontSize="3xl" textAlign="center" style={{ color: colors.text }}>
+    <Text fontFamily="Poppins_700Bold" fontSize="3xl" textAlign="center" style={{ color: colors.text }}>
       Assistidos
     </Text>
     <ShowList shows={watchedMovies} title="Filmes" navigation={navigation} />

@@ -81,14 +81,14 @@ const styles = StyleSheet.create({
     textAlign: "justify" 
   },
 
-  name: {
-    fontWeight: "bold", 
+  name: { 
     color: '#fff', 
-    marginTop: 20 
+    marginTop: 20,
+    fontFamily: 'Poppins_700Bold' 
   },
   
   movie_info: { 
-    fontWeight: "bold", 
+    fontWeight: "bold",
     color: '#fff',
     marginLeft: 15 
   }

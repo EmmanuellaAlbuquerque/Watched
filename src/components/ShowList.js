@@ -39,7 +39,7 @@ export function ShowList({ shows, title, navigation }) {
 
   return (
     <Box mt="5">
-      <Text bold fontSize="2xl" color="white" style={{ marginLeft: 20, marginBottom: 10  }}>
+      <Text fontFamily="Poppins_700Bold" fontSize="2xl" color="white" style={{ marginLeft: 20, marginBottom: 10  }}>
         { title }
       </Text>
       { shows.length ? 

@@ -78,7 +78,7 @@ export function LoginScreen({ navigation }) {
           w="100%"
         />
         <Stack space={4} w="85%">
-        <Text fontSize="4xl" style={{ color: colors.text }}>Entrar</Text>
+        <Text fontSize="4xl" fontFamily="Poppins_200ExtraLight" style={{ color: colors.text }}>Entrar</Text>
           <Input size="2xl" h={'16'}
             placeholder="Nome de usuário" 
             color={colors.text}
@@ -103,7 +103,7 @@ export function LoginScreen({ navigation }) {
           />
           <TouchableOpacity style={styles.button} onPress={() => handleLogin(username, password)} > 
             <Center>
-              <Text bold fontSize="xl" >Entrar</Text>
+              <Text fontSize="xl" fontFamily="Poppins_700Bold" >Entrar</Text>
             </Center>
           </TouchableOpacity>
           <Text 
@@ -112,11 +112,13 @@ export function LoginScreen({ navigation }) {
             fontSize="md"
             style={{ color: colors.text }}
             onPress={handleSignUp}
+            fontFamily="Poppins_400Regular"
           > Não tem conta?  <Text 
-                bold 
+                fontFamily="Poppins_400Regular" 
                 underline 
                 fontSize="md"
-                style={{ color: colors.text }}>
+                style={{ color: colors.text }}
+                >
                 Cadastre-se
               </Text>
           </Text>
