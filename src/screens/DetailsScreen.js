@@ -4,20 +4,77 @@
 */
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { ImageBackground, View, StyleSheet } from 'react-native';
+import { ImageBackground, View, StyleSheet, TouchableOpacity, StatusBar, Platform } from 'react-native';
 import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
-import { Text, AspectRatio, ScrollView, HStack, Center } from "native-base";
+import { Text, AspectRatio, ScrollView, HStack, Center, AddIcon, MinusIcon, InfoOutlineIcon, Stack, VStack, Alert, Divider } from "native-base";
 import { images_URL } from '../services/MovieDbAPIConfig';
+import { getShowStatus, saveWatched, removeWatchedShow } from '../services/MovieDbAPIClient';
+import { AuthContext } from '../contexts/AuthContext';
+import React, { useContext, useEffect, useState } from 'react';
+
+const statusBarHeight = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
 
 export function DetailsScreen({ navigation, route }) {
-  const item = route.params.item;
+  const [item, setItem] = useState(route.params.item);
+
+  const media_type = item.media_type || 'movie';
+
+  const { session_id, account_id } = useContext(AuthContext);
+  const [isShowAddedToWatched, setIsShowAddedToWatched] = useState(false);
+  const [wasShowWatched, setWasShowWatched] = useState(false);
 
   function goBack() {
     navigation.goBack();
   }
 
+  async function AddToWatched() {
+    const resp = await saveWatched(session_id, account_id, media_type, item.id);
+
+    if (resp) {
+
+      setIsShowAddedToWatched(true);
+      setWasShowWatched(true);
+
+      setTimeout(() => {
+        setIsShowAddedToWatched(false);
+      }, 2 * 1000);
+    }
+  }
+
+  async function removeFromWatched() {
+    const resp = await removeWatchedShow(session_id, account_id, media_type, item.id);
+
+    if (resp) {
+      setWasShowWatched(false);
+    }
+  }
+
+  async function wasWatched() {
+    const watched = await getShowStatus(session_id, item.id, media_type);
+
+    if (watched) {
+      setWasShowWatched(true);
+    }
+  }
+
+  useEffect(() => {
+    wasWatched();
+  }, []);
+
   return (
     <ScrollView style={{ backgroundColor: '#000' }}>
+      {
+        isShowAddedToWatched && 
+        <Alert w="100%" variant="solid" colorScheme="success" status="success" mt={statusBarHeight}>
+          <HStack alignItems="center" space={2}>
+            <Alert.Icon />
+            <Text color="warmGray.50" fontFamily="Poppins_500Medium">
+              Adicionado com sucesso
+            </Text>
+          </HStack>
+        </Alert>
+      }
+
       <AspectRatio w="100%" ratio={4 / 5.5}>
       {/* re `16/9`, `16/10`, `9/16`, `4/3` */}
       { item ? 
@@ -28,7 +85,24 @@ export function DetailsScreen({ navigation, route }) {
           <LinearGradient style={{ flex: 1 }} colors={['transparent', 'transparent', 'black']}>
             <View style={{ flex: 1 }}>
             </View>
-            <Ionicons onPress={goBack} name="arrow-back" size={32} color="white" style={styles.goBack} />
+            <Ionicons onPress={goBack} name="arrow-back" size={32} color="gray" style={styles.goBack} />
+
+            {
+              wasShowWatched ? 
+              <TouchableOpacity style={styles.button} onPress={removeFromWatched}>
+                <Center>
+                  <MinusIcon size="8" color="#fff" />
+                  <Text color="#fff">Remover</Text>
+                </Center>
+             </TouchableOpacity>
+              :
+              <TouchableOpacity style={styles.button} onPress={AddToWatched}>
+                <Center>
+                  <AddIcon size="8" color="#fff" />
+                  <Text color="#fff">Já assisti</Text>
+                </Center>
+            </TouchableOpacity>
+            }
           </LinearGradient>
         </ImageBackground>
       : 
@@ -91,5 +165,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: '#fff',
     marginLeft: 15 
-  }
+  },
+
+  button: {  
+    marginBottom: 70
+  },
 });
