@@ -16,6 +16,7 @@ import { useFonts, Poppins_300Light,
   Poppins_200ExtraLight, Poppins_700Bold
 } from '@expo-google-fonts/poppins';
 import * as SplashScreen from 'expo-splash-screen';
+import { AuthProvider } from "./src/contexts/AuthContext";
 
 const config = {
   dependencies: {
@@ -73,18 +74,20 @@ export default function App() {
   }
 
   return (
-    <NativeBaseProvider config={config} onLayout={fontsLoadedCallback}>
-      <StatusBar barStyle={"light-content"} translucent={true} backgroundColor={'transparent'} />
-      <NavigationContainer theme={defaultTheme}>
-        <Stack.Navigator initialRouteName={ isLoggedIn ? 'TabMenu' : 'Login'} screenOptions={{ 
-          headerShown: false
-          }}>
-          <Stack.Screen name="TabMenu" component={TabMenuScreen} />
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="Details" component={DetailsScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </NativeBaseProvider>
+    <AuthProvider>
+      <NativeBaseProvider config={config} onLayout={fontsLoadedCallback}>
+        <StatusBar barStyle={"light-content"} translucent={true} backgroundColor={'transparent'} />
+        <NavigationContainer theme={defaultTheme}>
+          <Stack.Navigator initialRouteName={ isLoggedIn ? 'TabMenu' : 'Login'} screenOptions={{ 
+            headerShown: false
+            }}>
+            <Stack.Screen name="TabMenu" component={TabMenuScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="Details" component={DetailsScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    </AuthProvider>
   );
 }
