@@ -45,10 +45,6 @@ export function HomeScreen({ navigation }) {
     navigation.navigate('Login');
   }
 
-  function AddToWatched() {
-
-  }
-
   return (
     <ScrollView style={{ backgroundColor: '#000' }} >
       <Box>
@@ -62,29 +58,27 @@ export function HomeScreen({ navigation }) {
             <LinearGradient style={{ flex: 1 }} colors={['transparent', 'transparent', 'black']}>
               <View style={{ flex: 1 }}>
               </View>
-              <Center style={styles.logOut}>
+              {/* <Center style={styles.logOut}>
                 <AntDesign onPress={logOut} name="logout" size={32} color="white" />
                 <Text color="#fff">Sair</Text>
-              </Center>
+              </Center> */}
 
               <HStack>
-                  <TouchableOpacity style={styles.button} onPress={() => {
-                    AddToWatched()
-                  } }>
-                    <Center>
-                      <AddIcon size="8" color="#fff" />
-                      <Text color="#fff">Já assisti</Text>
-                    </Center>
-                  </TouchableOpacity>
-
-                  <TouchableOpacity style={styles.button} onPress={() => {
-                    getDetails(topShow);
-                  } }>
-                    <Center>
-                      <InfoOutlineIcon size="8" color="#fff" />
-                      <Text color="#fff">Saiba mais</Text>
-                    </Center>
-                  </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => {
+                  getDetails(topShow);
+                } }>
+                  <Center>
+                    <InfoOutlineIcon size="8" color="#fff" />
+                    <Text color="#fff">Saiba mais</Text>
+                  </Center>
+                </TouchableOpacity>
+                
+                <TouchableOpacity style={styles.button} onPress={logOut}>
+                  <Center>
+                    <AntDesign name="logout" size={32} color="white" />
+                    <Text color="#fff">Sair</Text>
+                  </Center>
+                </TouchableOpacity>
               </HStack>
             </LinearGradient>
           </ImageBackground>
