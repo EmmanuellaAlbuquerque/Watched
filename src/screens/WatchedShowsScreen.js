@@ -35,16 +35,21 @@ export function WatchedShowsScreen({ navigation }) {
   }
 
   useEffect(() => {
-    handleGetWatched();
-  }, []);
+    
+    navigation.addListener('focus', () => {
+      // Call action when the screen is focused
+      handleGetWatched();
+    });
+
+  }, [navigation]);
 
   return (
   <ScrollView mt="16" ml="2.5">
     <Text fontFamily="Poppins_700Bold" fontSize="3xl" textAlign="center" style={{ color: colors.text }}>
       Assistidos
     </Text>
-    <ShowList shows={watchedMovies} title="Filmes" navigation={navigation} />
-    <ShowList shows={watchedSeries} title="Séries" navigation={navigation} />
+    <ShowList shows={watchedMovies} media_type="movie" title="Filmes" navigation={navigation} />
+    <ShowList shows={watchedSeries} media_type="tv" title="Séries" navigation={navigation} />
   </ScrollView>
   );
 }

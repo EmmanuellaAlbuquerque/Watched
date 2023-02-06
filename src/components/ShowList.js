@@ -8,10 +8,18 @@ import { images_URL } from '../services/MovieDbAPIConfig';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 
-export function ShowList({ shows, title, navigation }) {
+export function ShowList({ shows, title, navigation, media_type }) {
 
   function getDetails(item) {
-    navigation.navigate('Details', { item });
+    let show = {
+      ...item
+    }
+
+    if (media_type) {
+      show = { ...show, media_type }
+    }
+
+    navigation.navigate('Details', { item: show });
   }
 
   function renderShow({ item }) {
