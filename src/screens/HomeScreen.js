@@ -4,7 +4,7 @@
 */
 
 import React, { useEffect, useState } from "react";
-import { getTrendingTVShows } from '../services/MovieDbAPIClient';
+import { getTrending } from '../services/MovieDbAPIClient';
 import { images_URL } from '../services/MovieDbAPIConfig';
 import { ImageBackground, View, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -17,14 +17,18 @@ import { AntDesign  } from '@expo/vector-icons';
 export function HomeScreen({ navigation }) {
 
   const [topShow, setTopShow] = useState();
-  const [trending, setTrending] = useState([]);
+  const [trendingTVShows, setTrendingTVShow] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
 
     (async () => {
-      let top = await getTrendingTVShows();
-      setTopShow(top[0]);
-      setTrending(top.splice(1));
+      let topTV = await getTrending("tv");
+      let topMovies = await getTrending("movie");
+      setTopShow(topTV[0]);
+      setTrendingTVShow(topTV.splice(1));
+
+      setTrendingMovies(topMovies);
     })();
 
   }, []);
@@ -91,7 +95,8 @@ export function HomeScreen({ navigation }) {
         }
         </AspectRatio>
       </Box>
-      <ShowList shows={trending} title="Populares na TV" navigation={navigation} />
+      <ShowList shows={trendingTVShows} title="Séries Populares" navigation={navigation} />
+      <ShowList shows={trendingMovies} title="Filmes Populares" navigation={navigation} />
     </ScrollView>
   );
 }
