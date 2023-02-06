@@ -52,7 +52,9 @@ export function LoginScreen({ navigation }) {
       // Save User Info
       await storeUserInfo({ request_token, session_id, account_id: String(account_id) });
 
-      navigation.navigate('TabMenu')
+      if (session_id) {
+        navigation.navigate('TabMenu')
+      }
     }
     else {
       // setShowAlert(true);
