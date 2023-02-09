@@ -1,6 +1,10 @@
+/**
+* Authentication Context
+* Created by Emmanuella Albuquerque on 2023/02/05.
+*/
+
 import React, { createContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 export const AuthContext = createContext({});
 

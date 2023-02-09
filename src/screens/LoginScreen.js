@@ -1,8 +1,14 @@
+/**
+* Login Screen
+* Created by Emmanuella Albuquerque on 2023/01/31.
+*/
+
 import { Text, Center, Input, Stack, Icon, Pressable, Image, Box } from 'native-base';
 import { useTheme } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 import logo from '../assets/images/logo.png';
+import logo2 from '../assets/images/logo2.png';
 import { TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { getNewToken, validateWithLogin } from '../services/MovieDbAPIClient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -73,10 +79,10 @@ export function LoginScreen({ navigation }) {
       <Center style={{ flex: 1 }}>
         {/* "xs", "sm", "md", "lg", "xl", "2xl" */}
         <Image 
-          source={logo} 
+          source={logo2} 
           alt="logo" 
           mb="12"
-          size="sm"
+          size="md"
           w="100%"
         />
         <Stack space={4} w="85%">

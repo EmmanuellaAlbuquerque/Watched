@@ -9,11 +9,11 @@
 
 Home Screen | Details Screen | Watched Screen
 :---: | :---:| :---:|
-<img src=".github/images/HomeScreen.jpg" width = 300px> | <img src=".github/images/ShowDetailsScreen.jpg" width = 300px> | <img src=".github/images/WatchedScreen.jpg" width = 300px> |
+<img src=".github/images/tela1.jpg" width = 300px> | <img src=".github/images/DetailsScreen.jpg" width = 300px> | <img src=".github/images/WatchedScreen.jpg" width = 300px> |
 
-Login Screen | Details Screen | Watched Screen
+Login Screen | Sign Up (Web View) | Watched Screen
 :---: | :---:| :---:|
-<img src=".github/images/LoginScreen.jpg" width = 300px> | <img src=".github/images/tela1.jpg" width = 300px> | <img src=".github/images/tela2.jpg" width = 300px> |
+<img src=".github/images/LoginScreen.jpg" width = 300px> | <img src=".github/images/SignUpScreen.jpg" width = 300px> | <img src=".github/images/tela2.jpg" width = 300px> |
 
 ### Watched
 
@@ -30,12 +30,12 @@ Login Screen | Details Screen | Watched Screen
 #### implementar adição aos favoritos
 - [x] Create Session (session_id)
 - [x] Get Account Info (account id)
-- [ ] Fav
+- [x] Fav
 
 #### implementar pesquisa
 - [ ] 
 
 #### tarefas
 - [x] tela de login
-- [ ] tela de cadastro
-- [ ] mudar fonte
+- [x] tela de cadastro
+- [x] mudar fonte

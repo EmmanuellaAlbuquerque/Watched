@@ -1,3 +1,8 @@
+/**
+* Tab Menu Screen
+* Created by Emmanuella Albuquerque on 2023/01/31.
+*/
+
 import React from "react";
 import { HomeScreen } from './HomeScreen';
 import { WatchedShowsScreen } from './WatchedShowsScreen';
