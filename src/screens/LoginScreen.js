@@ -7,8 +7,8 @@ import { Text, Center, Input, Stack, Icon, Pressable, Image, Box } from 'native-
 import { useTheme } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useState } from 'react';
-import logo from '../assets/images/logo.png';
 import logo2 from '../assets/images/logo2.png';
+import newLogo from '../assets/images/newLogoTransparent3.png';
 import { TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { getNewToken, validateWithLogin } from '../services/MovieDbAPIClient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -75,21 +75,27 @@ export function LoginScreen({ navigation }) {
 
   return (
     // position="absolute" zIndex={1} top="10%"
-    <Box style={{ flex: 1 }}>
+    <Box style={{ flex: 1, backgroundColor: '#000' }}>
       <Center style={{ flex: 1 }}>
         {/* "xs", "sm", "md", "lg", "xl", "2xl" */}
         <Image 
-          source={logo2} 
+          source={newLogo} 
           alt="logo" 
-          mb="12"
-          size="md"
-          w="100%"
+          mb="8"
+          size="2xl"
+          // w="100%"
         />
+        {/* 88240E CC2814 292420 */}
         <Stack space={4} w="85%">
-        <Text fontSize="4xl" fontFamily="Poppins_200ExtraLight" style={{ color: colors.text }}>Entrar</Text>
+        <Text fontSize="4xl" fontFamily="Poppins_600SemiBold" style={{ color: '#88240E' }}>Entrar</Text>
           <Input size="2xl" h={'16'}
             placeholder="Nome de usuário" 
             color={colors.text}
+            focusOutlineColor='rgba(136, 36, 14, 0.7)'
+            borderColor='#333'
+            _focus={{
+              bg: 'rgba(136, 36, 14, 0.10)'
+            }}
             InputLeftElement={<Icon as={<MaterialIcons name="person" />} 
               size={7} ml="4" color="muted.400" 
             />}
@@ -97,7 +103,13 @@ export function LoginScreen({ navigation }) {
           />
           <Input size="2xl" h={'16'}
             placeholder="Senha"
-            color={colors.text} 
+            color={colors.text}
+            outlineColor='yellow.700'
+            focusOutlineColor='rgba(136, 36, 14, 0.7)'
+            borderColor='#333'
+            _focus={{
+              bg: 'rgba(136, 36, 14, 0.10)'
+            }}
             type={passwordVisible ? "text" : "password"}
             InputLeftElement={<Pressable 
               onPress={handlePasswordButtonClick}
@@ -111,7 +123,7 @@ export function LoginScreen({ navigation }) {
           />
           <TouchableOpacity style={styles.button} onPress={() => handleLogin(username, password)} > 
             <Center>
-              <Text fontSize="xl" fontFamily="Poppins_700Bold" >Entrar</Text>
+              <Text fontSize="xl" fontFamily="Poppins_700Bold" style={{ color: colors.text }}>Entrar</Text>
             </Center>
           </TouchableOpacity>
           <Text 
@@ -138,7 +150,7 @@ export function LoginScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#fff', 
+    backgroundColor: '#CC2814', 
     padding: 15, 
     borderRadius: 8, 
     marginTop: 8

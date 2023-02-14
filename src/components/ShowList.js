@@ -7,8 +7,9 @@ import { Box, Center, Text, FlatList, VStack, Image } from 'native-base';
 import { images_URL } from '../services/MovieDbAPIConfig';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
+import Loading from '../assets/images/loading.gif';
 
-export function ShowList({ shows, title, navigation, media_type }) {
+export function ShowList({ shows, title, navigation, media_type, ...rest }) {
 
   function getDetails(item) {
     let show = {
@@ -32,12 +33,13 @@ export function ShowList({ shows, title, navigation, media_type }) {
         <Image source={{
           uri: `${images_URL}${item.poster_path}`
           }} 
-          alt="tv_show" 
+          alt="show" 
           size="xl"
           resizeMode="cover"
           height="200" 
           width="100"
           borderRadius={8}
+          defaultSource={Loading}
         />
         {/* <Text color="#fff">{item.title || item.name}</Text> */}
         </VStack>
@@ -46,15 +48,15 @@ export function ShowList({ shows, title, navigation, media_type }) {
   }
 
   return (
-    <Box mt="5">
-      <Text fontFamily="Poppins_700Bold" fontSize="2xl" color="white" style={{ marginLeft: 20, marginBottom: 10  }}>
+    <Box mt="5" {...rest}>
+      <Text fontFamily="Poppins_700Bold" fontSize="2xl" color="#88240E" style={{ marginLeft: 20, marginBottom: 10  }}>
         { title }
       </Text>
       { shows.length ? 
         <FlatList data={shows} horizontal={true} renderItem={renderShow}
         keyExtractor={item => item.id} />
       :
-        <Center h={200} w={100} borderRadius={8} backgroundColor="gray.400">
+        <Center h={200} w={100} borderRadius={8} bg="gray.400">
           <AntDesign name="forward" size={24} color="#000" />
         </Center>
       }

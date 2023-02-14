@@ -6,6 +6,7 @@
 import React from "react";
 import { HomeScreen } from './HomeScreen';
 import { WatchedShowsScreen } from './WatchedShowsScreen';
+import { SearchScreen } from './SearchScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -22,6 +23,8 @@ export function TabMenuScreen({ navigation }) {
           iconName = 'home';
         } else if (route.name === 'Watched') {
           iconName = 'forward';
+        } else if (route.name === 'Search') {
+          iconName = 'search1';
         }
 
         return <AntDesign name={iconName} size={size} color={color} />;
@@ -35,6 +38,7 @@ export function TabMenuScreen({ navigation }) {
   return (
     <Tab.Navigator screenOptions={handleTabIcons}>
       <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
       <Tab.Screen name="Watched" component={WatchedShowsScreen} />
     </Tab.Navigator>
   );

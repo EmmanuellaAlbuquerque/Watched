@@ -61,6 +61,12 @@ export async function getShowStatus(session_id, show_id, media_type) {
   return get(buildURL(path, language, { session_id }), 'favorite');
 }
 
+// GET - Search Movies, TV Shows
+export async function searchAll(query, media_type) {
+  const path = `/search/${media_type}`;
+  return get(buildURL(path, language, { query }), 'results');
+}
+
 // POST - Add to Favorites
 export async function saveWatched(session_id, account_id, media_type, show_id) {
   const json = {

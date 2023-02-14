@@ -46,7 +46,7 @@ export function HomeScreen({ navigation }) {
   }
 
   return (
-    <ScrollView style={{ backgroundColor: '#000' }} >
+    <ScrollView bg='#000'>
       <Box>
         <AspectRatio w="100%" ratio={4 / 5.5}>
         {/* re `16/9`, `16/10`, `9/16`, `4/3` */}
@@ -55,7 +55,7 @@ export function HomeScreen({ navigation }) {
             uri: `${images_URL}${topShow.poster_path}`
             }}
           >
-            <LinearGradient style={{ flex: 1 }} colors={['transparent', 'transparent', 'black']}>
+            <LinearGradient style={{ flex: 1 }} colors={['transparent', 'transparent', '#000']}>
               <View style={{ flex: 1 }}>
               </View>
               {/* <Center style={styles.logOut}>
@@ -90,7 +90,7 @@ export function HomeScreen({ navigation }) {
         </AspectRatio>
       </Box>
       <ShowList shows={trendingTVShows} title="Séries Populares" navigation={navigation} />
-      <ShowList shows={trendingMovies} title="Filmes Populares" navigation={navigation} />
+      <ShowList shows={trendingMovies} title="Filmes Populares" navigation={navigation} style={{ paddingBottom: 50 }} />
     </ScrollView>
   );
 }

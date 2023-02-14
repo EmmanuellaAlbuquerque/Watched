@@ -17,11 +17,13 @@ const statusBarHeight = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
 export function DetailsScreen({ navigation, route }) {
   const [item, setItem] = useState(route.params.item);
 
-  const media_type = item.media_type || 'movie';
+  const media_type = item.media_type;
 
   const { session_id, account_id } = useContext(AuthContext);
   const [isShowAddedToWatched, setIsShowAddedToWatched] = useState(false);
   const [wasShowWatched, setWasShowWatched] = useState(false);
+
+  console.log(item)
 
   function goBack() {
     navigation.goBack();
@@ -111,18 +113,18 @@ export function DetailsScreen({ navigation, route }) {
       </AspectRatio>
       <Center>
         <HStack style={{ width: '100%', justifyContent: "space-evenly" }}>
-          { item.media_type ?
-          <HStack alignItems="center">
-            <Feather name="tv" size={32} color="white" />
-            <Text fontSize="3xl" style={styles.movie_info}>
-              Série
-            </Text>
-          </HStack>
-          : 
+          { item.media_type == 'movie' ?
           <HStack alignItems="center">
             <Feather name="tv" size={32} color="white" />
             <Text fontSize="3xl" style={styles.movie_info}>
               Filme
+            </Text>
+          </HStack>
+          :
+          <HStack alignItems="center">
+            <Feather name="tv" size={32} color="white" />
+            <Text fontSize="3xl" style={styles.movie_info}>
+              Série
             </Text>
           </HStack>
           }
@@ -156,7 +158,7 @@ const styles = StyleSheet.create({
   },
 
   name: { 
-    color: '#fff', 
+    color: '#88240E', 
     marginTop: 20,
     fontFamily: 'Poppins_700Bold' 
   },
