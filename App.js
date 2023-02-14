@@ -13,16 +13,19 @@ import { TabMenuScreen } from "./src/screens/TabMenuScreen";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts, Poppins_300Light, 
   Poppins_500Medium, Poppins_400Regular, 
-  Poppins_200ExtraLight, Poppins_700Bold
+  Poppins_200ExtraLight, Poppins_700Bold, Poppins_600SemiBold
 } from '@expo-google-fonts/poppins';
 import * as SplashScreen from 'expo-splash-screen';
 import { AuthProvider } from "./src/contexts/AuthContext";
+import * as NavigationBar from 'expo-navigation-bar';
 
 const config = {
   dependencies: {
     'linear-gradient': LinearGradient
   }
 };
+
+NavigationBar.setBackgroundColorAsync("black");
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +36,8 @@ export default function App() {
     Poppins_300Light, 
     Poppins_500Medium, 
     Poppins_400Regular,
-    Poppins_700Bold
+    Poppins_700Bold,
+    Poppins_600SemiBold
   });
   
   useEffect(() => {
