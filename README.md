@@ -15,13 +15,13 @@ Mantenha uma lista de todos os filmes e séries que você já assistiu.
 
 ## :art: Telas
 
-Home Screen | Details Screen | Watched Screen
+Login Screen | Home Screen | Details Screen (Watched)
 :---: | :---:| :---:|
-<img src=".github/images/tela1.jpg" width = 300px> | <img src=".github/images/DetailsScreen.jpg" width = 300px> | <img src=".github/images/WatchedScreen.jpg" width = 300px> |
+<img src=".github/images/NewLoginScreen2.jpg" width = 300px> | <img src=".github/images/HomeScreenNew.jpg" width=300px> | <img src=".github/images/DetailsScreenWatched.jpg" width = 300px> |
 
-Login Screen | Sign Up (Web View) | Details Screen
+Search Screen | Watched Screen | Details Screen (Not Watched)
 :---: | :---:| :---:|
-<img src=".github/images/LoginScreen.jpg" width = 300px> | <img src=".github/images/SignUpScreen.jpg" width = 300px> | <img src=".github/images/tela2.jpg" width = 300px> |
+<img src=".github/images/SearchScreen.jpg" width=300px> | <img src=".github/images/WatchedScreenFull.jpg" width = 300px> | <img src=".github/images/DetailsScreenNotWatched.jpg" width = 300px> |
 
 ## ✨ Tecnologias
 
@@ -67,8 +67,8 @@ THEMOVIEDB_APIKEY=
 - [x] Watched
 
 #### implementar pesquisa
-- [ ] for movies
-- [ ] for series
+- [x] for movies
+- [x] for series
 
 ## ✍️ Autor
 
