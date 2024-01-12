@@ -13,6 +13,7 @@
 
 Mantenha uma lista de todos os filmes e séries que você já assistiu.
 
+
 ## :art: Telas
 
 Login Screen | Home Screen | Details Screen (Watched)
@@ -36,20 +37,33 @@ API do The Movie Database (TMDb) que mantém um banco de dados, atualizado const
 
 ## :rocket: Executando o projeto
 
-Utilize o **yarn** ou o **npm install** para instalar as dependências do projeto.
-Em seguida, inicie o projeto.
+### Versions Used
 
-```sh
-npx expo start
-```
+- Node 17
+- Expo 47
+- React Native 0.70.5
 
-Lembre-se de obter a API KEY do ([TMDb](https://developers.themoviedb.org/3/getting-started/introduction)). Em seguida, defina o arquivo .env na home do projeto.
+Primeiramente, lembre-se de obter a API KEY do ([TMDb](https://developers.themoviedb.org/3/getting-started/introduction)). Em seguida, defina o arquivo .env na home do projeto.
  
  ```sh
 # .env.example
 
 THEMOVIEDB_APIKEY=
 ```
+
+Utilize o **yarn** ou o **npm install** para instalar as dependências do projeto.
+Em seguida, inicie o projeto.
+
+```sh
+nvm use 17
+nvm current
+
+npx expo start
+```
+
+## :iphone: APK
+
+[Android APK](.github/APK/Watched.apk)
 
 ## :hammer_and_wrench: Tarefas
 
@@ -64,11 +78,11 @@ THEMOVIEDB_APIKEY=
 #### implementar adição aos assistidos
 - [x] Create Session (session_id)
 - [x] Get Account Info (account id)
-- [x] Watched
+- [x] Add to Watched
 
 #### implementar pesquisa
-- [x] for movies
-- [x] for series
+- [x] For movies
+- [x] For series
 
 ## ✍️ Autor
 
