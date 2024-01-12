@@ -51,6 +51,10 @@ Lembre-se de obter a API KEY do ([TMDb](https://developers.themoviedb.org/3/gett
 THEMOVIEDB_APIKEY=
 ```
 
+## :iphone: APK
+
+[Android APK](.github/Watched.apk)
+
 ## :hammer_and_wrench: Tarefas
 
 #### implementar login
@@ -64,11 +68,11 @@ THEMOVIEDB_APIKEY=
 #### implementar adição aos assistidos
 - [x] Create Session (session_id)
 - [x] Get Account Info (account id)
-- [x] Watched
+- [x] Add to Watched
 
 #### implementar pesquisa
-- [x] for movies
-- [x] for series
+- [x] For movies
+- [x] For series
 
 ## ✍️ Autor
 

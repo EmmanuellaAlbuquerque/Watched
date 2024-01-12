@@ -39,7 +39,10 @@ export function HomeScreen({ navigation }) {
 
   function logOut() {
     AsyncStorage.getAllKeys()
-        .then(keys => AsyncStorage.multiRemove(keys))
+        .then(keys => {
+          console.log(keys);
+          AsyncStorage.multiRemove(keys);
+        })
         .then(console.log('logout.'));
 
     navigation.navigate('Login');

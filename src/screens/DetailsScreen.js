@@ -19,8 +19,11 @@ export function DetailsScreen({ navigation, route }) {
 
   const media_type = item.media_type;
 
-  const { session_id, account_id } = useContext(AuthContext);
+  const { authObject } = useContext(AuthContext);
+  console.log(authObject);
+
   const [isShowAddedToWatched, setIsShowAddedToWatched] = useState(false);
+  const [isShowRemovedFromWatched, setIsShowRemovedFromWatched] = useState(false);
   const [wasShowWatched, setWasShowWatched] = useState(false);
 
   console.log(item)
@@ -30,7 +33,7 @@ export function DetailsScreen({ navigation, route }) {
   }
 
   async function AddToWatched() {
-    const resp = await saveWatched(session_id, account_id, media_type, item.id);
+    const resp = await saveWatched(authObject.session_id, authObject.account_id, media_type, item.id);
 
     if (resp) {
 
@@ -44,15 +47,20 @@ export function DetailsScreen({ navigation, route }) {
   }
 
   async function removeFromWatched() {
-    const resp = await removeWatchedShow(session_id, account_id, media_type, item.id);
+    const resp = await removeWatchedShow(authObject.session_id, authObject.account_id, media_type, item.id);
 
     if (resp) {
+      setIsShowRemovedFromWatched(true);
       setWasShowWatched(false);
+
+      setTimeout(() => {
+        setIsShowRemovedFromWatched(false);
+      }, 2 * 1000);
     }
   }
 
   async function wasWatched() {
-    const watched = await getShowStatus(session_id, item.id, media_type);
+    const watched = await getShowStatus(authObject.session_id, item.id, media_type);
 
     if (watched) {
       setWasShowWatched(true);
@@ -71,7 +79,19 @@ export function DetailsScreen({ navigation, route }) {
           <HStack alignItems="center" space={2}>
             <Alert.Icon />
             <Text color="warmGray.50" fontFamily="Poppins_500Medium">
-              Adicionado com sucesso
+              Adicionado com sucesso!
+            </Text>
+          </HStack>
+        </Alert>
+      }
+
+      {
+        isShowRemovedFromWatched && 
+        <Alert w="100%" variant="solid" colorScheme="error" status="error" mt={statusBarHeight}>
+          <HStack alignItems="center" space={2}>
+            <Alert.Icon />
+            <Text color="warmGray.50" fontFamily="Poppins_500Medium">
+              Removido com sucesso!
             </Text>
           </HStack>
         </Alert>
@@ -159,6 +179,7 @@ const styles = StyleSheet.create({
 
   name: { 
     color: '#88240E', 
+    marginHorizontal: 20,
     marginTop: 20,
     fontFamily: 'Poppins_700Bold' 
   },

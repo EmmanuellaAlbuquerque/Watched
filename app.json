@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TheMovieApp",
-    "slug": "TheMovieApp",
+    "name": "Watched",
+    "slug": "Watched",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,13 +24,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000"
-      }
+      },
+      "package": "com.manu_czz.Watched"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "androidNavigationBar": {
       "backgroundColor": "#000"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "150353e8-93ed-4915-acc2-df479ebfa3df"
+      }
     }
   }
 }
