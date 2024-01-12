@@ -13,6 +13,7 @@
 
 Mantenha uma lista de todos os filmes e séries que você já assistiu.
 
+https://github.com/EmmanuellaAlbuquerque/Watched/assets/57198678/def53002-6e9c-4d35-8b0d-b4bbedcc6034
 
 ## :art: Telas
 

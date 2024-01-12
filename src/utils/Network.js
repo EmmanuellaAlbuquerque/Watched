@@ -26,6 +26,7 @@ export async function post(url, resource, body) {
 
   let response = await fetch(url, init);
   let json = await response.json();
+  console.log(json);
 
   let payload = json[resource];
   return payload;
